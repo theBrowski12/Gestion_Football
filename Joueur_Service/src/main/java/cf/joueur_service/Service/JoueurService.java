@@ -16,7 +16,7 @@ public interface JoueurService {
     //lister les joueur ordre decroissante
     public List<Joueur> getAllJoueursByGoals();
     public ResponseJoueurDTO updateJoueurGoals(Long id, int buts);
-    public Joueur getTopScorer();
+    public List<Joueur> findTopJoueurs();
     public int totalGoals();
 
 }

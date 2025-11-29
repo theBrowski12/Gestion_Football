@@ -83,9 +83,8 @@ public class JoueurServiceImpl implements JoueurService {
     }
 
     @Override
-    public Joueur getTopScorer() {
-        return repo.findTopJoueur(repo.findAll());
-    }
+    public List<Joueur> findTopJoueurs() {
+        return repo.findTopJoueurs();    }
 
     @Override
     public int totalGoals() {

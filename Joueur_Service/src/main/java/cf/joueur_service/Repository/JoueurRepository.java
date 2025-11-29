@@ -10,8 +10,8 @@ public interface JoueurRepository extends JpaRepository<Joueur, Long> {
     @Query("SELECT j FROM Joueur j ORDER BY j.nbr_buts DESC")
     public List<Joueur> findAllByGoals(List<Joueur> joueurs);
 
-    @Query("SELECT j FROM Joueur j ORDER BY j.nbr_buts DESC")
-    public Joueur findTopJoueur(List<Joueur> joueurs);
+    @Query("SELECT j FROM Joueur j WHERE j.nbr_buts = (SELECT MAX(j2.nbr_buts) FROM Joueur j2)")
+    List<Joueur> findTopJoueurs();
 
     @Query("SELECT sum(j.nbr_buts) FROM Joueur j ")
     public int totalGoals();

@@ -215,5 +215,19 @@ public class API {
         dto = service.updateJoueurGoals(id, buts);
         return ResponseEntity.ok(dto);
     }
+    @Operation(
+            summary = "Meuilleur Joueur",
+            description = "Renvoie le top scorer.",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "succes",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = Integer.class)))
+            }
+    )
+    @GetMapping("/Top")
+    public ResponseEntity<List<Joueur>> getTop() {
+        List<Joueur> topJoueurs = repo.findTopJoueurs();
+        return ResponseEntity.ok(topJoueurs);
+    }
 }
 
